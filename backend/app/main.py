@@ -26,6 +26,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         # "https://exoplanet-detection-sp06.onrender.com",
+        "https://exodios.onrender.com/",
         "http://localhost:3000",
         "http://localhost:3001",
     ],
