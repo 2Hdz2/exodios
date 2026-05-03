@@ -9,7 +9,7 @@ from .models import EllipseDetectorCNN
 from .utils import extract_patch, generate_synthetic_patches_v2
 
 PATCH_SIZE = 64
-EPOCHS_CNN = 90
+EPOCHS_CNN = 50
 MODEL_PATH = Path(__file__).resolve().parent / "cnn_model.pt"
 device     = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

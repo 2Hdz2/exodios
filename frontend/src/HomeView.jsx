@@ -117,29 +117,9 @@ function LoadingOverlay({ fileCount, currentStep, done, total }) {
 }
 
 function ImageViewer({ src }) {
-  const canvasRef = useRef();
-  const [scale, setScale]   = useState(1);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (!src || !canvasRef.current) return;
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      const ctx = canvasRef.current.getContext("2d");
-      ctx.clearRect(0, 0, 400, 400);
-      const fit = Math.min(400 / img.width, 400 / img.height) * scale;
-      ctx.setTransform(fit, 0, 0, fit, offset.x, offset.y);
-      ctx.drawImage(img, 0, 0);
-    };
-  }, [src, scale, offset]);
-
   return (
-    <canvas ref={canvasRef} width={400} height={400}
-      style={{ border: "1px solid #444", background: "#000", cursor: "grab", borderRadius: 4 }}
-      onWheel={(e) => setScale(s => Math.max(0.3, Math.min(8, s - e.deltaY * 0.001)))}
-      onMouseMove={(e) => e.buttons === 1 && setOffset(o => ({ x: o.x + e.movementX, y: o.y + e.movementY }))}
-    />
+    <img src={src} alt="Detection Result"
+      style={{ width: "100%", borderRadius: 4, border: "1px solid #444", background: "#000", display: "block" }} />
   );
 }
 
@@ -300,7 +280,7 @@ export default function HomeView({ results, setResults }) {
     dlBtn:    { background: "#2a6e2a", color: "#fff", fontSize: 11, padding: "3px 8px",
                 borderRadius: 3, border: "none", cursor: "pointer", marginLeft: 4 },
     grid:     { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(420px, 1fr))", gap: 16 },
-    imgCard:  { background: "#1a1a1a", borderRadius: 6, padding: 12 },
+    imgCard:  { background: "#1e1e1e", border: "1px solid #2a2a2a", borderRadius: 8, padding: 16, transition: "all 0.2s" },
     row:      { display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" },
     divider:  { border: "none", borderTop: "1px solid #2a2a2a", margin: "4px 0" },
     updateBtn:{ width: "100%", padding: "10px 0", borderRadius: 6, border: "none", cursor: "pointer",
@@ -332,8 +312,11 @@ export default function HomeView({ results, setResults }) {
         {/* Upload */}
         <div style={s.card}>
           <h3 style={{ marginTop: 0, marginBottom: 8 }}>Upload FITS / Image Files</h3>
-          <input type="file" multiple accept=".fits,.fit,.fts,.png,.jpg,.jpeg,.tif,.tiff"
-            onChange={handleUpload} style={{ color: "#eee" }} />
+          <label className="file-upload-button">
+            Choose Files
+            <input type="file" multiple accept=".fits,.fit,.fts,.png,.jpg,.jpeg,.tif,.tiff"
+              onChange={handleUpload} style={{ display: 'none' }} />
+          </label>
           {hasUploaded && files.length > 0 && (
             <p style={{ fontSize: 12, color: "#666", margin: "8px 0 0 0" }}>
               {files.length} file{files.length !== 1 ? "s" : ""} loaded — adjust parameters and click{" "}
@@ -469,6 +452,7 @@ export default function HomeView({ results, setResults }) {
           </div>
         )}
       </div>
+
 
       {/* ── Right: Parameters ── */}
       <div style={s.rightCol}>

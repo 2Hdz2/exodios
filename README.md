@@ -74,8 +74,10 @@ A typical repository layout:
      - `python -m venv .venv`
    - Activate it:
      - `.\.venv\Scripts\activate`
+     - python -m uvicorn app.main:app --reload --port 8000
    - Install dependencies:
      - `pip install -r requirements.txt`
+    
 
 3. Frontend environment:
    - `cd frontend`
@@ -90,6 +92,7 @@ From `backend/`:
   - `python app.py`
 - Or if using FastAPI:
   - `uvicorn app:app --reload`
+  - example:  uvicorn app.main:app --port 8000
 
 ## Running the Frontend
 

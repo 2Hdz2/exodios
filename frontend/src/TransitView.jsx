@@ -296,7 +296,10 @@ export default function TransitView() {
         <p style={{ fontSize: 12, color: "#666", margin: "0 0 10px 0" }}>
           Accepted: TESS .tbl, Kepler/TESS .fits, or .csv with TIME + PDCSAP_FLUX columns
         </p>
-        <input type="file" accept=".fits,.fit,.tbl,.csv" onChange={handleUpload} style={{ color: "#eee" }} />
+        <label className="file-upload-button">
+          Choose File
+          <input type="file" accept=".fits,.fit,.tbl,.csv" onChange={handleUpload} style={{ display: 'none' }} />
+        </label>
         {loading && <LoadingOverlay step={loadStep} />}
       </div>
 
