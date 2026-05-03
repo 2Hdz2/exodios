@@ -16,12 +16,8 @@ export default function Upload({ setResults, setLightCurve, setRawLightCurve }) 
       const form = new FormData();
       form.append("file", file);
 
-    // const res = await fetch("http://localhost:8000/api/transit/detect", {
-    //   method: "POST",
-    //   body: form,
-    // });
-
-      const res = await fetch("https://exodios-backend.onrender.com/api/transit/detect", {
+      const baseURL = import.meta.env.VITE_API_URL || "https://exodios-backend.onrender.com";
+      const res = await fetch(`${baseURL}/api/transit/detect`, {
       method: "POST",
       body: form,
     });

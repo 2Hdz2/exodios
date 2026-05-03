@@ -1,9 +1,7 @@
 
 import { useState, useRef, useCallback } from "react";
-// const BACKEND_URL = "http://localhost:8000";
 
-// const BACKEND_URL = "https://exo-hybrid-detection-backend.onrender.com";
-const BACKEND_URL = "https://exodios-backend.onrender.com";
+const BACKEND_URL = import.meta.env.VITE_API_URL || "https://exodios-backend.onrender.com";
 
 
 function DropZone({ label, accept, icon, multiple=false, files, setFiles }) {

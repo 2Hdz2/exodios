@@ -17,12 +17,8 @@ export default function UploadCSV({ setModelResults }) {
       const formData = new FormData();
       formData.append("file", file);
 
-    // const res = await fetch("http://localhost:8000/api/transit/generate-model", {
-    //   method: "POST",
-    //   body: formData,
-    // });
-
-      const res = await fetch("https://exodios-backend.onrender.com/api/transit/generate-model", {
+      const baseURL = import.meta.env.VITE_API_URL || "https://exodios-backend.onrender.com";
+      const res = await fetch(`${baseURL}/api/transit/generate-model`, {
       method: "POST",
       body: formData,
     });

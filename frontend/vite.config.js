@@ -10,9 +10,7 @@ export default defineConfig({
     allowedHosts: ["exoplanet-detection-sp06.onrender.com"],
     proxy: {
       "/api": {
-       // target: "http://localhost:8000",
-       target:"https://exodios-backend.onrender.com/",
-        // target: "https://exo-hybrid-detection-backend.onrender.com",
+        target: process.env.VITE_API_URL || "https://exodios-backend.onrender.com/",
         changeOrigin: true,
       },
     },

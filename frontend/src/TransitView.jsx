@@ -3,11 +3,7 @@ import LightCurvePlot from "./components/LightCurvePlot";
 import PhaseFoldPlot from "./components/PhaseFoldPlot";
 import UploadCSV from "./components/UploadCSV";
 
-// const BACKEND_URL = "http://localhost:8000";
-
-// const BACKEND_URL = "https://exo-hybrid-detection-backend.onrender.com";
-
-const BACKEND_URL = "https://exodios-backend.onrender.com";
+const BACKEND_URL = import.meta.env.VITE_API_URL || "https://exodios-backend.onrender.com";
 // ── Error Dialog ──────────────────────────────────────────────────────────────
 function ErrorDialog({ error, onClose }) {
   if (!error) return null;
