@@ -4,7 +4,8 @@ import { api } from "./api";
 import TrajectoryViewer from "./components/Trajectoryviewer";
 
 // const BACKEND_URL = "https://exo-hybrid-detection-backend.onrender.com";
-const BACKEND_URL = "http://localhost:8000";
+// const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = "https://exodios-backend.onrender.com";
 
 const DEFAULT_PARAMS = {
   // Detection
