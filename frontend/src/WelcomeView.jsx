@@ -1695,7 +1695,7 @@ export default function ExodiosApp() {
 
         <h2 className="section-title">EXODIOS</h2>
         <p className="section-sub">Exoplanet Detection Intelligence Operating System</p>
-
+         {/* Flip card design */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
