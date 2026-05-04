@@ -150,7 +150,7 @@ function AccordionSection({ title, icon, defaultOpen = false, children }) {
   );
 }
 
-// ── Stats Summary Bar ─────────────────────────────────────────────────────────
+//  Stats Summary Bar 
 function StatsSummary({ results }) {
   if (!results?.detections?.length) return null;
   const totalFrames   = results.detections.length;
@@ -184,7 +184,7 @@ function StatsSummary({ results }) {
   );
 }
 
-// ── Main ──────────────────────────────────────────────────────────────────────
+//  Main 
 export default function HomeView({ results, setResults }) {
   const [files, setFiles]                 = useState([]);
   const [jobId, setJobId]                 = useState(null);
@@ -361,7 +361,6 @@ export default function HomeView({ results, setResults }) {
                 {results?.trajectory_image ? (
   
                   <img
-                    // src={`${BACKEND_URL}/${results.trajectory_image}?t=${Date.now()}`}
                     
                     src={`${BACKEND_URL}/outputs/${results.trajectory_image}?t=${Date.now()}`}
                     // alt="Trajectory Result"
