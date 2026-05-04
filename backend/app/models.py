@@ -173,4 +173,3 @@ class Tracklet:
                 f'missed={self.missed}, conf={self.mean_confidence:.2f})')
     
 
-    #changed made 

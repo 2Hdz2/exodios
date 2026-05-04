@@ -40,7 +40,7 @@ function ErrorDialog({ error, onClose }) {
 function ConfidenceBadge({ score }) {
   const pct = Math.round(score * 100);
   const color = pct >= 70 ? "#4aff7f" : pct >= 40 ? "#f39c12" : "#e74c3c";
-  const label = pct >= 70 ? "High Confidence" : pct >= 40 ? "Moderate" : "Low Confidence";
+  // const label = pct >= 70 ? "High Confidence" : pct >= 40 ? "Moderate" : "Low Confidence";
   return (
     <div style={{ display: "inline-flex", alignItems: "center", gap: 8,
                   background: "#1a1a1a", border: `1px solid ${color}`,
@@ -58,7 +58,7 @@ function LSTMScoreBar({ score }) {
   return (
     <div style={{ marginTop: 8 }}>
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-        <span style={{ fontSize: 12, color: "#aaa" }}>LSTM Transit Probability</span>
+        {/* <span style={{ fontSize: 12, color: "#aaa" }}>LSTM Transit Probability</span> */}
         <span style={{ fontSize: 12, color, fontWeight: "bold" }}>{pct}%</span>
       </div>
       <div style={{ background: "#222", borderRadius: 4, height: 8, overflow: "hidden" }}>
@@ -141,18 +141,18 @@ function PlanetCard({ planet, index, lightCurve }) {
       {planet.lstm_transit_prob !== undefined && (() => {
         const pct = Math.round(planet.lstm_transit_prob * 100);
         const c   = pct >= 60 ? "#4aff7f" : pct >= 35 ? "#f39c12" : "#e74c3c";
-        return (
-          <div style={{ marginBottom: 12 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-              <span style={{ fontSize: 11, color: "#666" }}>LSTM Transit Probability</span>
-              <span style={{ fontSize: 11, color: c, fontWeight: "bold" }}>{pct}%</span>
-            </div>
-            <div style={{ background: "#222", borderRadius: 4, height: 6 }}>
-              <div style={{ height: "100%", width: `${pct}%`, background: c,
-                            borderRadius: 4, transition: "width 0.5s" }} />
-            </div>
-          </div>
-        );
+        // return (
+          // <div style={{ marginBottom: 12 }}>
+          //   <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
+          //     {/* <span style={{ fontSize: 11, color: "#666" }}>LSTM Transit Probability</span> */}
+          //     <span style={{ fontSize: 11, color: c, fontWeight: "bold" }}>{pct}%</span>
+          //   </div>
+          //   <div style={{ background: "#222", borderRadius: 4, height: 6 }}>
+          //     <div style={{ height: "100%", width: `${pct}%`, background: c,
+          //                   borderRadius: 4, transition: "width 0.5s" }} />
+          //   </div>
+          // </div>
+        // );
       })()}
 
       {/* Phase fold */}
@@ -312,14 +312,14 @@ export default function TransitView() {
                 <h3 style={{ margin: "0 0 6px 0", fontSize: 16 }}>
                   {results.num_planets > 0
                     ? `✅ ${results.num_planets} Planet Candidate${results.num_planets > 1 ? "s" : ""} Detected`
-                    : "🔍 No Backend Detection — Periodic Dips Shown on Chart"}
+                    : "🔍 Periodic Dips Shown on Chart"}
                 </h3>
-                <p style={{ margin: "0 0 4px 0", fontSize: 13, color: "#aaa" }}>
+                {/* <p style={{ margin: "0 0 4px 0", fontSize: 13, color: "#aaa" }}>
                   LSTM transit probability:{" "}
                   <b style={{ color: (results.lstm_score ?? 0) > 0.6 ? "#4aff7f" : (results.lstm_score ?? 0) > 0.35 ? "#f39c12" : "#aaa" }}>
                     {Math.round((results.lstm_score ?? 0) * 100)}%
                   </b>
-                </p>
+                </p> */}
                 {results.num_planets === 0 && (
                   <p style={{ margin: 0, fontSize: 12, color: "#666" }}>
                     The chart detects periodic dips using a 2-condition algorithm. Circles mark confirmed candidates.
